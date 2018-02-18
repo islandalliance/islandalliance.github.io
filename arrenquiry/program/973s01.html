@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>赤柱村總站 Stanley Village Terminus</title>
+</head>
+
+<body>
+
+<b>赤柱村總站 Stanley Village Terminus</b><hr>
+
+<script src="holiday.js"></script>
+
+<script language="javascript">
+//Variables
+
+var d = new Date(); //this is the prototype for getting time information
+	
+var dow = d.getDay();			//get the day-of-week today
+var h = d.getHours();			//get the hour now
+var m = d.getMinutes();			//get the minute now
+
+var year = d.getFullYear();		//get year
+var month = d.getMonth();		//get month now
+var day = d.getDate();			//get date now
+
+var numericaltime = h*100 + m;		//numerical time for comparison
+var numericaldate = year*10000 + (month+1)*100 + day; //numericaldate for public holiday determination
+var coming = [0,0,0]; //to store the coming departure
+var i=0,j=0;				//initialize i and j as pointers
+
+function pad2(number) {
+	return (number < 10 ? '0' : '') + number
+}
+
+consider();
+
+function consider () {
+	for (i=0;i<34;i++) {
+		if (numericaldate == ph[i]) {
+			dow =0;
+		}
+	}
+
+	if (dow == 0) {
+		displaydow = "星期日及公眾假期 Sunday & Public Holidays";
+		document.write(displaydow);
+		document.write("<br>");
+		loadSun();
+	}
+
+	else if (dow == 6) {
+		displaydow = "星期六 Saturday";
+		document.write(displaydow);
+		document.write("<br>");
+		loadSat();
+	}
+
+	else {
+		displaydow = "星期一至五 Mon to Fri";
+		document.write(displaydow);
+		document.write("<br>");
+		loadWeekday();
+	}
+}
+
+function loadWeekday() {
+	var timetable = [
+	0655,
+	0720,
+	0742,
+	0812,
+	0835,
+	0855,
+	0915,
+	0935,
+	0955,
+	1020,
+	1035,
+	1105,
+	1135,
+	1205,
+	1235,
+	1305,
+	1335,
+	1405,
+	1435,
+	1505,
+	1525,
+	1545,
+	1605,
+	1625,
+	1645,
+	1705,
+	1725,
+	1745,
+	1810,
+	1835,
+	1905,
+	1935,
+	2005,
+	2035,
+	2105,
+	2135,
+	2205,
+	];
+
+	for (i=0;i<37;i++){
+		if (numericaltime - timetable[i] < 10) {
+			coming[j] = timetable[i];
+			j++;
+		}
+	}
+}
+
+function loadSat() {
+	var timetable = [
+	0705,
+	0735,
+	0805,
+	0835,
+	0905,
+	0935,
+	1005,
+	1035,
+	1105,
+	1135,
+	1205,
+	1235,
+	1305,
+	1335,
+	1405,
+	1435,
+	1505,
+	1535,
+	1605,
+	1635,
+	1705,
+	1735,
+	1805,
+	1835,
+	1905,
+	1935,
+	2005,
+	2035,
+	2105,
+	2135,
+	2205
+	];
+
+	for (i=0;i<31;i++){
+		if (numericaltime - timetable[i] < 10) {
+			coming[j] = timetable[i];
+			j++;
+		}
+	}
+}
+
+function loadSun() {
+	var timetable = [
+	0805,
+	0835,
+	0905,
+	0935,
+	1005,
+	1035,
+	1105,
+	1135,
+	1205,
+	1235,
+	1305,
+	1335,
+	1405,
+	1435,
+	1505,
+	1535,
+	1605,
+	1635,
+	1705,
+	1735,
+	1805,
+	1835,
+	1905,
+	1935,
+	2005,
+	2035,
+	2105,
+	2135,
+	2205
+	];
+
+	for (i=0;i<29;i++){
+		if (numericaltime - timetable[i] < 10) {
+			coming[j] = timetable[i];
+			j++;
+		}
+	}
+}
+
+function displaytime(input) {
+	if (coming[0]==0 && input==0) {
+		document.write("尾班車已過本站");
+		}
+	else if (coming[0]==0 && input==1) {
+		document.write("The last departure has left");
+		}
+	else if (coming[input]<1000) {
+		document.write("0");
+		document.write(coming[input]);
+	}
+	else 	document.write(coming[input]);
+}
+</script>
+
+<table bgcolor = #FFFFFF border="1">
+<tr>
+	<th>開車時間 Departure Time</th>
+</tr>
+<tr>
+	<th><font size="7"><script>if (coming[0]!=0) displaytime(0);</script></font><font size="5"><script>if (coming[0]==0) displaytime(0);</script></font></th>
+</tr>
+<tr>
+	<th><font size="7"><script>if (coming[0]!=0) displaytime(1);</script></font><font size="5"><script>if (coming[0]==0) displaytime(1);</script></font></th>	
+</tr>
+<tr>
+	<th><font size="7"><script>displaytime(2);</script></font></th>
+</tr>
+</table>
+
+</body>
+</html>
