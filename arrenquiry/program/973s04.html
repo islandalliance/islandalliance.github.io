@@ -1,0 +1,229 @@
+﻿<html>
+<head>
+<title>中港城 China HK City</title>
+</head>
+
+<body>
+
+<b>中港城 China HK City</b><hr>
+
+<script src="holiday.js"></script>
+
+<script language="javascript">
+//Variables
+
+var d = new Date(); //this is the prototype for getting time information
+	
+var dow = d.getDay();			//get the day-of-week today
+var h = d.getHours();			//get the hour now
+var m = d.getMinutes();			//get the minute now
+
+var year = d.getFullYear();		//get year
+var month = d.getMonth();		//get month now
+var day = d.getDate();			//get date now
+
+var numericaltime = h*100 + m;		//numerical time for comparison
+var numericaldate = year*10000 + (month+1)*100 + day; //numericaldate for public holiday determination
+var coming = [0,0,0]; //to store the coming departure
+var i=0,j=0;				//initialize i and j as pointers
+
+function pad2(number) {
+	return (number < 10 ? '0' : '') + number
+}
+
+consider();
+
+function consider () {
+	for (i=0;i<34;i++) {
+		if (numericaldate == ph[i]) {
+			dow =0;
+		}
+	}
+
+	if (dow == 0) {
+		displaydow = "星期日及公眾假期 Sunday & Public Holidays";
+		document.write(displaydow);
+		document.write("<br>");
+		loadSun();
+	}
+
+	else if (dow == 6) {
+		displaydow = "星期六 Saturday";
+		document.write(displaydow);
+		document.write("<br>");
+		loadSat();
+	}
+
+	else {
+		displaydow = "星期一至五 Mon to Fri";
+		document.write(displaydow);
+		document.write("<br>");
+		loadWeekday();
+	}
+}
+
+function loadWeekday() {
+	var timetable = [
+	0847,
+	0902,
+	0917,
+	0937,
+	0957,
+	1017,
+	1047,
+	1117,
+	1147,
+	1217,
+	1247,
+	1317,
+	1347,
+	1417,
+	1447,
+	1517,
+	1537,
+	1557,
+	1617,
+	1637,
+	1657,
+	1717,
+	1737,
+	1757,
+	1822,
+	1852,
+	1922,
+	1952,
+	2021,
+	2051,
+	2120,
+	2150,
+	2220
+	];
+
+	for (i=0;i<34;i++){
+		if (numericaltime - timetable[i] < 10) {
+			coming[j] = timetable[i];
+			j++;
+		}
+	}
+
+	i=0;
+}
+
+function loadSat() {
+	var timetable = [
+	0847,
+	0917,
+	0947,
+	1017,
+	1047,
+	1117,
+	1147,
+	1217,
+	1247,
+	1317,
+	1347,
+	1417,
+	1447,
+	1517,
+	1547,
+	1617,
+	1647,
+	1717,
+	1747,
+	1817,
+	1847,
+	1917,
+	1947,
+	2016,
+	2046,
+	2115,
+	2145,
+	2220
+	];
+
+	for (i=0;i<28;i++){
+		if (numericaltime - timetable[i] < 10) {
+			coming[j] = timetable[i];
+			j++;
+		}
+	}
+
+	i=0;
+}
+
+function loadSun() {
+	var timetable = [
+	0817,
+	0847,
+	0917,
+	0947,
+	1017,
+	1047,
+	1117,
+	1147,
+	1217,
+	1247,
+	1317,
+	1347,
+	1417,
+	1447,
+	1517,
+	1547,
+	1617,
+	1647,
+	1717,
+	1747,
+	1817,
+	1847,
+	1917,
+	1947,
+	2016,
+	2046,
+	2115,
+	2145,
+	2220
+	];
+
+
+	for (i=0;i<29;i++){
+		if (numericaltime - timetable[i] < 10) {
+			coming[j] = timetable[i];
+			j++;
+		}
+	}
+
+	i=0;
+}
+
+function displaytime(input) {
+	if (coming[0]==0 && input==0) {
+		document.write("尾班車已過本站");
+		}
+	else if (coming[0]==0 && input==1) {
+		document.write("The last departure has left");
+		}
+	else if (coming[input]<1000) {
+		document.write("0");
+		document.write(coming[input]);
+	}
+	else 	document.write(coming[input]);
+}
+</script>
+
+<table bgcolor = #FFFFFF border="1">
+<tr>
+	<th>開車時間 Departure Time</th>
+</tr>
+<tr>
+	<th><font size="7"><script>if (coming[0]!=0) displaytime(0);</script></font><font size="5"><script>if (coming[0]==0) displaytime(0);</script></font></th>
+</tr>
+<tr>
+	<th><font size="7"><script>if (coming[0]!=0) displaytime(1);</script></font><font size="5"><script>if (coming[0]==0) displaytime(1);</script></font></th>	
+</tr>
+<tr>
+	<th><font size="7"><script>displaytime(2);</script></font></th>
+</tr>
+</table>
+
+</body>
+</html>
