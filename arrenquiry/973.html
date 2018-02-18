@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<title>973 赤柱來往尖沙咀 | 973 between Stanley and Tsim Sha Tsui</title>
+</head>
+
+<body>
+
+<p><b><a href="javascript:history.go(0)">重新整理 Click to refresh</a></b></p>
+<script language="javascript">
+//Variables
+
+var d = new Date(); //this is the prototype for getting time information
+	
+var dow = d.getDay();			//get the day-of-week today
+var h = d.getHours();			//get the hour now
+var m = d.getMinutes();			//get the minute now
+
+var year = d.getFullYear();		//get year
+var month = d.getMonth();		//get month now
+var day = d.getDate();			//get date now
+
+function pad2(number) {
+	return (number < 10 ? '0' : '') + number
+}
+
+// testing
+
+function iframeChange() {
+    var buttons = document.querySelector(".loadiframe"),
+        iframe = document.getElementById('frame');
+
+    buttons.addEventListener("click", function (e) {
+        iframe.src = e.target.dataset.src;
+        iframe.width = e.target.dataset.width;
+        iframe.height = e.target.dataset.height;
+    });
+}
+window.onload = iframeChange;
+
+</script>
+
+<p>裝置時間 Device date & time: <b><script>document.write(year);</script>/<script>document.write(month+1);</script>/<script>document.write(day);document.write("  ");document.write(h);</script>:<script>document.write(pad2(m));</script></b></p>
+
+<div class="loadiframe">
+
+<font size="4"><b><i><u>往尖沙咀 to Tsim Sha Tsui</u></i></b></font>
+<br>
+
+<button id="n1" data-src="program/973n01.html" data-width="350" data-height="300">赤柱村 Stanley Village</button>
+
+<button id="n2" data-src="program/973n02.html" data-width="350" data-height="300">淺水灣海灘 Repulse Bay Beach</button>
+
+<br>
+
+<button id="n3" data-src="program/973n03.html" data-width="350" data-height="300">深水灣 Deep Water Bay</button>
+
+<br>
+<font size="4"><b><i><u>往赤柱 to Stanley</u></i></b></font>
+<br>
+
+<button id="s1" data-src="program/973s01.html" data-width="350" data-height="300">尖東麼地道 Mody Rd. Terminus</button>
+
+<button id="s2" data-src="program/973s02.html" data-width="350" data-height="300">香港科學館 HK Science Museum</button>
+
+<br>
+
+<button id="s3" data-src="program/973s03.html" data-width="350" data-height="300">新港中心 Silvercord</button>
+
+<button id="s4" data-src="program/973s04.html" data-width="350" data-height="300">中港城 China Hong Kong City</button>
+
+<br>
+<font size="4"><b><i><u>測試按鈕 Test Buttons</u></i></b></font>
+<br>
+
+<button id="s5" data-src="program/973s05.html" data-width="350" data-height="300">西隧(測試中) WHC (Testing)</button>
+
+<br>
+
+<button id="s6" data-src="program/973s06.html" data-width="350" data-height="300">高樂花園(測試中) Connaught Garden (Testing)</button>
+</div>
+
+
+<iframe id='frame' frameborder="1" scrolling="no" width="350" height="300"></iframe>
+<p>請確定您所使用之裝置已設定正確的時間！<br>Please make sure the time in your device is correct!</p>
+
+<p><b>強烈建議閣下至少提早約3分鐘抵達車站。本抵站時間查詢服務以編定開車時間及該時段之一般行車時間為準。如遇較大規模交通阻塞，本服務所產生的抵站時間或未能反映實際到站時間<br>We strongly recommend passengers to arrive at the stop at least 3 minutes in advance. This enquiry service is based on the scheduled departure time and past journey time records. If a severe traffic jam is observed, the arrival time shown here may not reflect the actual arrival time.</b></p>
+
+<p><b><a href="https://islandalliance.github.io/arrenquiry">返回抵站時間查詢主頁 Back to Enquiry of Arrival Time main page</a></b></p>
+<p><b><a href="https://hkabdtunnel.github.io/hkabdtunnel">香隧即時睇 ABT At A Glance</a></b></p>
+
+</body>
+</html>
